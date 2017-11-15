@@ -107,7 +107,7 @@ class MainViewController: NSViewController, NSCollectionViewDelegate, NSCollecti
         graph.titlePlotAreaFrameAnchor = CPTRectAnchor.bottom
         graph.titleDisplacement = CGPoint(x: 0, y: -5)
         
-        // 2 - Create the chart
+        // Create the chart
         let pieChart = CPTPieChart()
         pieChart.delegate = self
         pieChart.dataSource = self

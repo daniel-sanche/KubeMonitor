@@ -143,7 +143,7 @@ class KubernetesMediator: NSObject {
         let memCol = Constants.KubeTop.memColumnNode
         let type = Constants.KubeTop.TopType.Node
         
-        return _topHelper(name: node.name, type: type, cpuCol: cpuCol, memCol: memCol, namespace: nil)
+        return topHelper(name: node.name, type: type, cpuCol: cpuCol, memCol: memCol, namespace: nil)
     }
     
     class func topPod(pod:PodModel) -> (cpu:Int, mem:Int)?{
@@ -151,10 +151,10 @@ class KubernetesMediator: NSObject {
         let memCol = Constants.KubeTop.memColumnPod
         let type = Constants.KubeTop.TopType.Pod
         
-        return _topHelper(name: pod.name, type: type, cpuCol: cpuCol, memCol: memCol, namespace: pod.namespace)
+        return topHelper(name: pod.name, type: type, cpuCol: cpuCol, memCol: memCol, namespace: pod.namespace)
     }
     
-    private class func _topHelper(name:String,type:Constants.KubeTop.TopType,cpuCol:Int,memCol:Int,namespace:String?)->(cpu:Int, mem:Int)?{
+    private class func topHelper(name:String,type:Constants.KubeTop.TopType,cpuCol:Int,memCol:Int,namespace:String?)->(cpu:Int, mem:Int)?{
         //this function involves parsing strings. If anything seems different than we expect, give up and return nil
         var args = ["top", type.rawValue, name]
         if type == .Pod, let ns = namespace {
@@ -181,8 +181,7 @@ class KubernetesMediator: NSObject {
     
     class func getCluster() -> ClusterModel{
         let nodeList = self.getNodes()
-        let clusterName = TerminalInterface.run(commandName: PreferenceData.sharedInstance.kubePath, arguments: ["config", "view",
-                                                                      "-o=template", "--template='{{ index . \"current-context\" }}'"])
+        let clusterName = TerminalInterface.run(commandName: PreferenceData.sharedInstance.kubePath, arguments: ["config", "view", "-o=template", "--template='{{ index . \"current-context\" }}'"])
         let formatted = clusterName?.replacingOccurrences(of: "'", with: "")
         return ClusterModel(name:formatted, nodeList:nodeList)
     }

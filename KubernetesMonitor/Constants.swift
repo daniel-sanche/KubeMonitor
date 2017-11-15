@@ -102,6 +102,7 @@ extension NSColor {
         static let DullGreen = NSColor(calibratedRed: 0.561, green: 0.631, blue: 0.549, alpha: 0.5)
     }
     
+    //return a color representation for a given pod phase
     static func colorForPhase(phase:PodPhase) -> NSColor{
         switch phase {
         case .Running:
@@ -118,6 +119,7 @@ extension NSColor {
 
 
 extension String {
+    //truncate a string so that it is rouchly truncationSize
     func truncateMiddle(truncationSize:Int) -> String {
         var result = self
         let length = self.characters.count
@@ -131,6 +133,7 @@ extension String {
         return result
     }
     
+    //given a string representing memory resources, attempt to turn it into an int representation
     func cpuStringToInt() -> Int? {
         //rule: if it ends in an m, drop the m
         //if there is no m, multiply by 1000
@@ -145,6 +148,7 @@ extension String {
         return nil
     }
     
+     //given a string representing cpu resources, attempt to turn it into an int representation
     func memStringToInt() -> Int? {
         //rule: assume memory is given as Ki, Mi, or Gi
         let allowedPrefixes = Constants.MemoryPrefixes
@@ -167,6 +171,7 @@ extension String {
 }
 
 extension Int {
+    // return the number formatted as memory
     func memToString() -> String{
         var currentStr = ""
         for (title, value) in Constants.MemoryPrefixes{
@@ -180,6 +185,7 @@ extension Int {
         return currentStr
     }
     
+    // return the number formatted as CPU resources
     func cpuToString() -> String {
         let f = Float(self) / 1000.0
         return String(f)
