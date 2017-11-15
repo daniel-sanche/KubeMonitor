@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="564" y="-162"/>
         </scene>
-        <!--View Controller-->
+        <!--Third Party Libraries-->
         <scene sceneID="szV-bK-ncJ">
             <objects>
-                <viewController showSeguePresentationStyle="single" id="5ui-he-9d4" sceneMemberID="viewController">
+                <viewController title="Third Party Libraries" showSeguePresentationStyle="single" id="5ui-he-9d4" sceneMemberID="viewController">
                     <view key="view" id="Iel-t0-5SF">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="347"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -842,7 +842,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         <scene sceneID="BZ4-vi-DlK">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="jvb-wn-6El" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="7mb-aI-SbM">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="7mb-aI-SbM">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
@@ -856,10 +856,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
             </objects>
             <point key="canvasLocation" x="492" y="530"/>
         </scene>
-        <!--Preferences View Controller-->
+        <!--Preferences-->
         <scene sceneID="Tj8-6V-fFi">
             <objects>
-                <viewController id="wbD-TM-Hdj" customClass="PreferencesViewController" customModule="KubernetesMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Preferences" showSeguePresentationStyle="single" id="wbD-TM-Hdj" customClass="PreferencesViewController" customModule="KubernetesMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="9Be-yy-mOS">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1126,6 +1126,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         <image name="settings" width="320" height="330"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vhz-VF-DSG"/>
+        <segue reference="Hhm-99-6Fc"/>
     </inferredMetricsTieBreakers>
 </document>
