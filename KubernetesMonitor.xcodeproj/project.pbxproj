@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5F07F74D1FB1294300495F18 /* PreferenceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07F74C1FB1294300495F18 /* PreferenceData.swift */; };
 		5F07F74F1FB12AC600495F18 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07F74E1FB12AC600495F18 /* PreferencesViewController.swift */; };
+		5F256A071FBD02C700604929 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F256A061FBD02C700604929 /* Extensions.swift */; };
 		5F91EF0A1FA7E0A900753BAC /* PodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F91EF081FA7E0A900753BAC /* PodItem.swift */; };
 		5F91EF0B1FA7E0A900753BAC /* PodItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F91EF091FA7E0A900753BAC /* PodItem.xib */; };
 		5F91EF0D1FA7F56100753BAC /* KubernetesMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F91EF0C1FA7F56100753BAC /* KubernetesMediator.swift */; };
@@ -31,6 +32,7 @@
 		13FA9AA6D83EF8F34390BF3C /* Pods-KubernetesMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KubernetesMonitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KubernetesMonitor/Pods-KubernetesMonitor.debug.xcconfig"; sourceTree = "<group>"; };
 		5F07F74C1FB1294300495F18 /* PreferenceData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceData.swift; sourceTree = "<group>"; };
 		5F07F74E1FB12AC600495F18 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		5F256A061FBD02C700604929 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5F91EF081FA7E0A900753BAC /* PodItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodItem.swift; sourceTree = "<group>"; };
 		5F91EF091FA7E0A900753BAC /* PodItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PodItem.xib; sourceTree = "<group>"; };
 		5F91EF0C1FA7F56100753BAC /* KubernetesMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KubernetesMediator.swift; sourceTree = "<group>"; };
@@ -64,6 +66,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F256A031FBD020200604929 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5F91EF431FABC2FF00753BAC /* ClusterModel.swift */,
+				5F91EF451FABC31A00753BAC /* NodeModel.swift */,
+				5F91EF1A1FA9093100753BAC /* GroupModel.swift */,
+				5F91EF1E1FAA3A5300753BAC /* PodModel.swift */,
+				5F07F74C1FB1294300495F18 /* PreferenceData.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		5F256A041FBD023F00604929 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5F91EF3D1FAB8FC900753BAC /* Main.storyboard */,
+				5F91EF171FA906FE00753BAC /* HeaderItem.xib */,
+				5F91EF091FA7E0A900753BAC /* PodItem.xib */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		5F256A051FBD029000604929 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5F91EF201FAB8CE400753BAC /* MainViewController.swift */,
+				5F07F74E1FB12AC600495F18 /* PreferencesViewController.swift */,
+				5F91EF161FA906FE00753BAC /* HeaderItem.swift */,
+				5F91EF081FA7E0A900753BAC /* PodItem.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		5FA300801FA7CB1B008E846B = {
 			isa = PBXGroup;
 			children = (
@@ -85,24 +120,16 @@
 		5FA3008B1FA7CB1B008E846B /* KubernetesMonitor */ = {
 			isa = PBXGroup;
 			children = (
-				5F91EF161FA906FE00753BAC /* HeaderItem.swift */,
-				5F91EF171FA906FE00753BAC /* HeaderItem.xib */,
+				5F256A051FBD029000604929 /* ViewControllers */,
+				5F256A041FBD023F00604929 /* Storyboard */,
+				5F256A031FBD020200604929 /* Models */,
 				5FA3008C1FA7CB1B008E846B /* AppDelegate.swift */,
-				5F91EF3D1FAB8FC900753BAC /* Main.storyboard */,
+				5F91EF0C1FA7F56100753BAC /* KubernetesMediator.swift */,
+				5F91EF3F1FABA34600753BAC /* EventMonitor.swift */,
+				5F91EF101FA8EBA700753BAC /* Constants.swift */,
+				5F256A061FBD02C700604929 /* Extensions.swift */,
 				5FA300901FA7CB1B008E846B /* Assets.xcassets */,
 				5FA300951FA7CB1B008E846B /* Info.plist */,
-				5F91EF081FA7E0A900753BAC /* PodItem.swift */,
-				5F91EF091FA7E0A900753BAC /* PodItem.xib */,
-				5F91EF0C1FA7F56100753BAC /* KubernetesMediator.swift */,
-				5F91EF101FA8EBA700753BAC /* Constants.swift */,
-				5F91EF1A1FA9093100753BAC /* GroupModel.swift */,
-				5F91EF1E1FAA3A5300753BAC /* PodModel.swift */,
-				5F91EF201FAB8CE400753BAC /* MainViewController.swift */,
-				5F91EF3F1FABA34600753BAC /* EventMonitor.swift */,
-				5F91EF431FABC2FF00753BAC /* ClusterModel.swift */,
-				5F91EF451FABC31A00753BAC /* NodeModel.swift */,
-				5F07F74C1FB1294300495F18 /* PreferenceData.swift */,
-				5F07F74E1FB12AC600495F18 /* PreferencesViewController.swift */,
 			);
 			path = KubernetesMonitor;
 			sourceTree = "<group>";
@@ -267,6 +294,7 @@
 				5F91EF1F1FAA3A5300753BAC /* PodModel.swift in Sources */,
 				5F91EF211FAB8CE400753BAC /* MainViewController.swift in Sources */,
 				5F91EF0A1FA7E0A900753BAC /* PodItem.swift in Sources */,
+				5F256A071FBD02C700604929 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
