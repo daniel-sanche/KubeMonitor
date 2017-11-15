@@ -37,8 +37,7 @@ class HeaderItem: NSCollectionViewItem {
     
      // change the model associated with the cell. Update the view
      func setUpWithGroup(model:GroupModel){
-        var label = model.name
-        self.textLabel.stringValue = label + " (\(model.numberRunning())/\(model.numPods()))"
+        self.textLabel.stringValue = model.name + " (\(model.numberRunning())/\(model.numPods()))"
         self.associatedModel = model
         self.disclosureButton.state = Int(!model.collapsed as NSNumber)
         self.textLabel.textColor = NSColor.colorForPhase(phase: model.getWorstPhase())

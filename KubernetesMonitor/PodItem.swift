@@ -24,7 +24,7 @@ class PodItem: NSCollectionViewItem {
     private var associatedModel : PodModel?
     private var associatedNode : NodeModel?
     
-    private static let NodeMenuTitle = "Node"
+    private static let NodeMenuTitle = "SSH Node"
     private static let DeleteMenuTitle = "Delete Pod"
     
     //MARK: Initialization

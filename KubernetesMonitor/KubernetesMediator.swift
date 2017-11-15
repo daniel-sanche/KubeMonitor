@@ -17,10 +17,12 @@ import Cocoa
 
 class KubernetesMediator: NSObject {
     
+    //checks whether the kubectl command exists at a given path
     class func kubectlExistsAtPath(kubectlPath: String) -> Bool{
         return kubectlPath.contains("kubectl") && TerminalInterface.commandExists(path: kubectlPath)
     }
     
+    //launches an ssh session to a node
     class func launchTerminalToNode(node: NodeModel){
         if let ip = node.externalIP {
             var commandStr = "ssh " + ip
@@ -31,15 +33,18 @@ class KubernetesMediator: NSObject {
         }
     }
     
+    //launch a kubectl exec /bin/sh session into a container
     class func launchTerminalToPod(pod: PodModel, containerName: String){
         let commandStr = PreferenceData.sharedInstance.kubePath + " exec -it " + pod.name + " --container " + containerName + " --namespace=" + pod.namespace + " -- /bin/sh"
         TerminalInterface.launchTerminalSession(command: commandStr)
     }
     
+    //delete a pod from the cluster
     class func deletePod(pod: PodModel) -> String?{
        return TerminalInterface.run(commandName: PreferenceData.sharedInstance.kubePath, arguments: ["--namespace", pod.namespace, "delete", "pod", pod.name])
     }
     
+    //gets the set of pods running on the cluster, divided into groups based on label
     class func getPods(groupingLabel:String=PreferenceData.sharedInstance.groupingLabel) -> [GroupModel] {
         var labelDict: [String:[PodModel]] = [Constants.UnlabeledKey:[]]
         var groupList : [GroupModel] = []
@@ -94,6 +99,7 @@ class KubernetesMediator: NSObject {
         return groupList.sorted(by: GroupModel.sortFunc)
     }
     
+    //gets the set of nodes in the cluster
     private class func getNodes() -> [NodeModel] {
         var foundNodes : [NodeModel] = []
         do {
@@ -138,6 +144,7 @@ class KubernetesMediator: NSObject {
         return foundNodes
     }
     
+    //gets the resource info for a given node
     class func topNode(node:NodeModel) -> (cpu:Int, mem:Int)?{
         let cpuCol =  Constants.KubeTop.cpuColumn
         let memCol = Constants.KubeTop.memColumnNode
@@ -146,6 +153,7 @@ class KubernetesMediator: NSObject {
         return topHelper(name: node.name, type: type, cpuCol: cpuCol, memCol: memCol, namespace: nil)
     }
     
+    //gets the resource info for a given pod
     class func topPod(pod:PodModel) -> (cpu:Int, mem:Int)?{
         let cpuCol =  Constants.KubeTop.cpuColumn
         let memCol = Constants.KubeTop.memColumnPod
@@ -179,6 +187,7 @@ class KubernetesMediator: NSObject {
         return nil
     }
     
+    //gets information about the cluster as a whole
     class func getCluster() -> ClusterModel{
         let nodeList = self.getNodes()
         let clusterName = TerminalInterface.run(commandName: PreferenceData.sharedInstance.kubePath, arguments: ["config", "view", "-o=template", "--template='{{ index . \"current-context\" }}'"])

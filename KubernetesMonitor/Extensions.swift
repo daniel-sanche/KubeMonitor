@@ -17,6 +17,7 @@
 import Cocoa
 
 extension NSColor {
+    //colors chosen for the interface
     struct Kube {
         static let Red = NSColor(calibratedRed: 0.863, green: 0.314, blue: 0.278, alpha: 1)
         static let Yellow = NSColor(calibratedRed: 0.969, green: 0.761, blue: 0.243, alpha: 1)

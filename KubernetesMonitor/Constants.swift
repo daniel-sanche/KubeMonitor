@@ -54,6 +54,7 @@ struct Constants {
         }
     }
     
+    //keys used to parse kubectl json responses
     struct JSONKeys {
         static let metadata = "metadata"
         static let items = "items"
@@ -81,6 +82,7 @@ struct Constants {
     }
 }
 
+//describes the state of a pod
 enum PodPhase: Int, Comparable {
     case Succeeded
     case Running
