@@ -6,6 +6,72 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Window Controller-->
+        <scene sceneID="cw8-0c-D6G">
+            <objects>
+                <windowController id="MCf-n5-orQ" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="8nK-0O-bMA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="461" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                    </window>
+                    <connections>
+                        <segue destination="5ui-he-9d4" kind="relationship" relationship="window.shadowedContentViewController" id="822-tM-xR7"/>
+                    </connections>
+                </windowController>
+                <customObject id="sSG-fI-V38" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="564" y="-162"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="szV-bK-ncJ">
+            <objects>
+                <viewController showSeguePresentationStyle="single" id="5ui-he-9d4" sceneMemberID="viewController">
+                    <view key="view" id="Iel-t0-5SF">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="347"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8g-ni-HAJ">
+                                <rect key="frame" x="210" y="321" width="61" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Core Plot" id="1tj-Lg-bbz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NR0-J5-IZU">
+                                <rect key="frame" x="18" y="20" width="444" height="286"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="xQ7-6D-yVE">
+                                    <font key="font" metaFont="system" size="9"/>
+                                    <mutableString key="title">Copyright (c) 2015, Drew McCormack, Brad Larson, Eric Skroch, Barry Wark, Dirkjan Krijnders, Rick Maddy, Vijay Kalusani, Caleb Cannon, Jeff Buck, Thomas Elstner, Jeroen Leenarts, Craig Hockenberry, Hartwig Wiesmann, Koen van der Drift, Nino Ag, Mike Lischke, Trevor Harmon, Travis Fischer, Graham Mueller, Rafał Wójcik, Mike Rossetti, Michael Merickel, Lane Roathe, Ingmar Stein, Sean Holbert, Victor Martin Garcia, Jérôme Morissard, Demitri Muna, and Tim Monzures.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+Neither the name of the Core Plot Project nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</mutableString>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="d8g-ni-HAJ" firstAttribute="top" secondItem="Iel-t0-5SF" secondAttribute="top" constant="9" id="2op-YS-H52"/>
+                            <constraint firstAttribute="trailing" secondItem="NR0-J5-IZU" secondAttribute="trailing" constant="20" id="Hec-r7-CG3"/>
+                            <constraint firstItem="d8g-ni-HAJ" firstAttribute="centerX" secondItem="Iel-t0-5SF" secondAttribute="centerX" id="QS3-zm-za5"/>
+                            <constraint firstAttribute="bottom" secondItem="NR0-J5-IZU" secondAttribute="bottom" constant="20" id="WZU-NS-QZA"/>
+                            <constraint firstItem="NR0-J5-IZU" firstAttribute="top" secondItem="d8g-ni-HAJ" secondAttribute="bottom" constant="15" id="m0S-Xm-XHM"/>
+                            <constraint firstItem="NR0-J5-IZU" firstAttribute="leading" secondItem="Iel-t0-5SF" secondAttribute="leading" constant="20" id="tbK-xp-z3G"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="wRy-fb-cz7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1348" y="-113"/>
+        </scene>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
             <objects>
@@ -625,6 +691,12 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Third Party Libraries" id="mCI-ms-sB8" userLabel="Third Party Libraries">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <segue destination="MCf-n5-orQ" kind="modal" id="gye-Vu-oz1"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>

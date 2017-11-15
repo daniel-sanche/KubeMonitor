@@ -1,11 +1,11 @@
 # KubeMonitor
 
-
-
 ### About KubeMonitor
 KubeMonitor is an OS X app that displays information about your active Kubernetes cluster 
 in your menu bar. Internally, it polls the `kubectl` command to gather information about
 running pods and nodes, and displays it in a more user-friendly way
+
+---
 
 <p align="center">
   <img src="./Screenshot.png" alt="KubeMonitor Screenshot"/>
@@ -37,5 +37,8 @@ running pods and nodes, and displays it in a more user-friendly way
 - Connecting an SSH session to a node requires keys for authentication. If Google Cloud is
 being used, these keys should be found at `~/.ssh/google_compute_engine`
 
+### Third Party Libraries
+- This project makes use of [Core Plot](https://github.com/core-plot/core-plot) through [CocoaPods](https://cocoapods.org/)
 
+---
 **This is not an official Google product**
