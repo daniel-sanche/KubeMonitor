@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="HeaderItem" customModule="KubernetesMonitor" customModuleProvider="target">
+            <connections>
+                <outlet property="textLabel" destination="5OJ-y0-d76" id="9Bm-R2-qf6"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hZ-OP-dsW">
+                    <rect key="frame" x="190" y="20" width="0.0" height="0.0"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </stackView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UKY-HF-JQA">
+                    <rect key="frame" x="212" y="13" width="13" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="13" id="Bvo-30-Kzk"/>
+                        <constraint firstAttribute="width" constant="13" id="WEj-4R-WYY"/>
+                    </constraints>
+                    <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="overlaps" borderStyle="border" inset="2" id="KFo-aM-wrN">
+                        <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="disclosurePressed:" target="wqu-NZ-KId" id="W0I-T3-Dp3"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5OJ-y0-d76">
+                    <rect key="frame" x="18" y="11" width="186" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="yQf-m7-qkE"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="njw-1g-Ssx">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="UKY-HF-JQA" secondAttribute="trailing" constant="15" id="MLZ-Rn-byR"/>
+                <constraint firstItem="5OJ-y0-d76" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="f8M-ko-Pah"/>
+                <constraint firstItem="UKY-HF-JQA" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="gG9-HX-taE"/>
+                <constraint firstItem="5OJ-y0-d76" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="m7N-yC-1Cm"/>
+                <constraint firstItem="UKY-HF-JQA" firstAttribute="leading" secondItem="5OJ-y0-d76" secondAttribute="trailing" constant="10" id="vOz-ok-6CW"/>
+            </constraints>
+            <point key="canvasLocation" x="131" y="62"/>
+        </customView>
+        <collectionViewItem id="wqu-NZ-KId" customClass="HeaderItem" customModule="KubernetesMonitor" customModuleProvider="target">
+            <connections>
+                <outlet property="disclosureButton" destination="UKY-HF-JQA" id="lvo-Fv-bxb"/>
+                <outlet property="textLabel" destination="5OJ-y0-d76" id="oho-h9-kNN"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="bvh-IS-LvR"/>
+            </connections>
+        </collectionViewItem>
+    </objects>
+</document>

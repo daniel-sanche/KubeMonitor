@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PodItem" customModule="KubernetesMonitor" customModuleProvider="target">
+            <connections>
+                <outlet property="disclosureBtn" destination="bBB-3I-du4" id="1BD-gJ-sbW"/>
+                <outlet property="disclosureMenu" destination="U7k-tS-vTF" id="UfK-NO-9lh"/>
+                <outlet property="textLabel" destination="5OJ-y0-d76" id="9Bm-R2-qf6"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="20"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hZ-OP-dsW">
+                    <rect key="frame" x="190" y="10" width="0.0" height="0.0"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </stackView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5OJ-y0-d76">
+                    <rect key="frame" x="38" y="1" width="171" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="yQf-m7-qkE"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="Label" id="njw-1g-Ssx">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bBB-3I-du4">
+                    <rect key="frame" x="208" y="-3" width="36" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="28" id="Jl7-v7-gYV"/>
+                        <constraint firstAttribute="height" constant="21" id="fXO-6v-G3W"/>
+                    </constraints>
+                    <popUpButtonCell key="cell" type="disclosure" title="Delete Pod" bezelStyle="roundedDisclosure" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" arrowPosition="noArrow" preferredEdge="maxY" altersStateOfSelectedItem="NO" selectedItem="3xx-SO-yBu" id="0oc-fv-jSL">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="U7k-tS-vTF">
+                            <items>
+                                <menuItem title="Delete Pod" id="3xx-SO-yBu"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="bBB-3I-du4" secondAttribute="trailing" id="8cz-D2-w87"/>
+                <constraint firstItem="5OJ-y0-d76" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="40" id="IFA-Ti-gy1"/>
+                <constraint firstItem="5OJ-y0-d76" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="TVP-G2-R91"/>
+                <constraint firstItem="bBB-3I-du4" firstAttribute="leading" secondItem="5OJ-y0-d76" secondAttribute="trailing" constant="5" id="TX6-vc-P50"/>
+                <constraint firstItem="bBB-3I-du4" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="UdI-0i-xMR"/>
+            </constraints>
+            <point key="canvasLocation" x="131" y="62"/>
+        </customView>
+        <collectionViewItem id="wqu-NZ-KId" customClass="PodItem" customModule="KubernetesMonitor" customModuleProvider="target">
+            <connections>
+                <outlet property="disclosureBtn" destination="bBB-3I-du4" id="7I7-FA-W75"/>
+                <outlet property="disclosureMenu" destination="U7k-tS-vTF" id="5DH-p0-R8W"/>
+                <outlet property="textLabel" destination="5OJ-y0-d76" id="oho-h9-kNN"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="bvh-IS-LvR"/>
+            </connections>
+        </collectionViewItem>
+    </objects>
+</document>
