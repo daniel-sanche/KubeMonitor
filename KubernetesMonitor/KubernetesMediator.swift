@@ -28,7 +28,7 @@ class KubernetesMediator: NSObject {
             var commandStr = "ssh " + ip
             if let keyPath = PreferenceData.sharedInstance.sshPath {
                 commandStr +=  " -i " + keyPath
-             }
+            }
             TerminalInterface.launchTerminalSession(command: commandStr)
         }
     }
@@ -41,60 +41,53 @@ class KubernetesMediator: NSObject {
     
     //delete a pod from the cluster
     class func deletePod(pod: PodModel) -> String?{
-       return TerminalInterface.run(commandName: PreferenceData.sharedInstance.kubePath, arguments: ["--namespace", pod.namespace, "delete", "pod", pod.name])
+        return TerminalInterface.run(commandName: PreferenceData.sharedInstance.kubePath, arguments: ["--namespace", pod.namespace, "delete", "pod", pod.name])
     }
     
     //gets the set of pods running on the cluster, divided into groups based on label
     class func getPods(groupingLabel:String=PreferenceData.sharedInstance.groupingLabel) -> [GroupModel] {
         var labelDict: [String:[PodModel]] = [Constants.UnlabeledKey:[]]
         var groupList : [GroupModel] = []
-        do {
-            if let result = TerminalInterface.run(commandName: PreferenceData.sharedInstance.kubePath, arguments: ["get", "pods", "-o=json", "--all-namespaces"]),
-                let data = result.data(using: .utf8),
-                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                let podList = json[Constants.JSONKeys.items] as? [[String: Any]] {
-                    for pod in podList {
-                        if let metadata = pod[Constants.JSONKeys.metadata] as? [String: Any],
-                            let namespace = metadata[Constants.JSONKeys.namespace] as? String,
-                            let spec = pod[Constants.JSONKeys.spec] as? [String:Any],
-                            let name = metadata[Constants.JSONKeys.name] as? String,
-                            let status = pod[Constants.JSONKeys.status] as? [String:Any],
-                            let phaseStr = status[Constants.JSONKeys.phase] as? String,
-                            let startTimeStr = metadata[Constants.JSONKeys.creationtime] as? String,
-                            let containerJSON = status[Constants.JSONKeys.containers] as? [[String:Any]] {
-                        
-                                let hostIP = status[Constants.JSONKeys.hostIP] as? String
-                                let podIP = status[Constants.JSONKeys.podIP] as? String
-                                let nodeID = spec[Constants.JSONKeys.nodeID] as? String
-                        
-                                let model = PodModel(name:name, phaseStr:phaseStr, startTimeStr:startTimeStr, namespace:namespace,
-                                                     hostIP:hostIP, podIP:podIP, nodeID:nodeID, containerJSON:containerJSON)
-                                //assign a label (or uncategorized
-                                var podLabel = Constants.UnlabeledKey
-                                if let metadata = pod[Constants.JSONKeys.metadata] as? [String: Any],
-                                   let labels = metadata[Constants.JSONKeys.labels] as? [String:String],
-                                   let foundLabel = labels[groupingLabel]{
-                                        podLabel = foundLabel
-                                } else if namespace == Constants.SystemNamespaceKey{
-                                    //group kube-system pods together
-                                     podLabel = namespace
-                                }
-                                var oldPodList = labelDict[podLabel] ?? []
-                                oldPodList.append(model)
-                                labelDict[podLabel] = oldPodList
-                        }
+        if let podList = KubernetesMediator.kubectlJsonHelper(arguments: ["get", "pods", "-o=json", "--all-namespaces"]) {
+            for pod in podList {
+                if let metadata = pod[Constants.JSONKeys.metadata] as? [String: Any],
+                    let namespace = metadata[Constants.JSONKeys.namespace] as? String,
+                    let spec = pod[Constants.JSONKeys.spec] as? [String:Any],
+                    let name = metadata[Constants.JSONKeys.name] as? String,
+                    let status = pod[Constants.JSONKeys.status] as? [String:Any],
+                    let phaseStr = status[Constants.JSONKeys.phase] as? String,
+                    let startTimeStr = metadata[Constants.JSONKeys.creationtime] as? String,
+                    let containerJSON = status[Constants.JSONKeys.containers] as? [[String:Any]] {
+                    
+                    let hostIP = status[Constants.JSONKeys.hostIP] as? String
+                    let podIP = status[Constants.JSONKeys.podIP] as? String
+                    let nodeID = spec[Constants.JSONKeys.nodeID] as? String
+                    
+                    let model = PodModel(name:name, phaseStr:phaseStr, startTimeStr:startTimeStr, namespace:namespace,
+                                         hostIP:hostIP, podIP:podIP, nodeID:nodeID, containerJSON:containerJSON)
+                    //assign a label (or uncategorized
+                    var podLabel = Constants.UnlabeledKey
+                    if let metadata = pod[Constants.JSONKeys.metadata] as? [String: Any],
+                        let labels = metadata[Constants.JSONKeys.labels] as? [String:String],
+                        let foundLabel = labels[groupingLabel]{
+                        podLabel = foundLabel
+                    } else if namespace == Constants.SystemNamespaceKey{
+                        //group kube-system pods together
+                        podLabel = namespace
                     }
-                    //create GroupModels
-                    for (key, value) in labelDict{
-                        if (key != Constants.SystemNamespaceKey || PreferenceData.sharedInstance.showSystemPods),
-                            (key != Constants.UnlabeledKey || PreferenceData.sharedInstance.showUnlabeledPods) {
-                            let model = GroupModel(name: key, pods: value)
-                            groupList.append(model)
-                        }
-                    }
+                    var oldPodList = labelDict[podLabel] ?? []
+                    oldPodList.append(model)
+                    labelDict[podLabel] = oldPodList
                 }
-        } catch {
-            print("Error deserializing JSON: \(error)")
+            }
+            //create GroupModels
+            for (key, value) in labelDict{
+                if (key != Constants.SystemNamespaceKey || PreferenceData.sharedInstance.showSystemPods),
+                    (key != Constants.UnlabeledKey || PreferenceData.sharedInstance.showUnlabeledPods) {
+                    let model = GroupModel(name: key, pods: value)
+                    groupList.append(model)
+                }
+            }
         }
         return groupList.sorted(by: GroupModel.sortFunc)
     }
@@ -102,46 +95,53 @@ class KubernetesMediator: NSObject {
     //gets the set of nodes in the cluster
     private class func getNodes() -> [NodeModel] {
         var foundNodes : [NodeModel] = []
-        do {
-            if let result = TerminalInterface.run(commandName: PreferenceData.sharedInstance.kubePath, arguments: ["get", "node", "-o=json"]),
-                let data = result.data(using: .utf8),
-                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                let nodeList = json[Constants.JSONKeys.items] as? [[String: Any]]{
-                    for node in nodeList {
-                        if let status = node[Constants.JSONKeys.status] as? [String:Any],
-                            let metadata = node[Constants.JSONKeys.metadata] as? [String:Any],
-                            let name = metadata[Constants.JSONKeys.name] as? String,
-                            let startTimeStr = metadata[Constants.JSONKeys.creationtime] as? String,
-                            let info = status[Constants.JSONKeys.nodeInfo] as? [String: Any],
-                            let image = info[Constants.JSONKeys.image] as? String,
-                            let capDict = status[Constants.JSONKeys.capacity] as? [String: Any],
-                            let cpuCap = capDict[Constants.JSONKeys.cpu] as? String,
-                            let memCap = capDict[Constants.JSONKeys.memory] as? String,
-                            let addresses = status[Constants.JSONKeys.addressList] as? [[String:String]]{
-                            
-                            var externalIP : String?
-                            for thisDict in addresses {
-                                if thisDict[Constants.JSONKeys.type] == Constants.JSONKeys.externalIP {
-                                    externalIP = thisDict[Constants.JSONKeys.address]
-                                }
-                            }
-                            
-                            var memAlloc : String?
-                            var cpuAlloc : String?
-                            if let allocDict = status[Constants.JSONKeys.allocatable] as? [String:Any] {
-                                memAlloc = allocDict[Constants.JSONKeys.memory] as? String
-                                cpuAlloc = allocDict[Constants.JSONKeys.cpu] as? String
-                            }
-                            let model = NodeModel(name:name, creationDateStr:startTimeStr, osImage:image, cpuCapStr:cpuCap,
-                                                  cpuAllocableStr:cpuAlloc, memCapStr:memCap, memAllocableStr:memAlloc, externalIP:externalIP)
-                            foundNodes.append(model)
+        
+        if let nodeList = KubernetesMediator.kubectlJsonHelper(arguments: ["get", "nodes", "-o=json"]){
+            for node in nodeList {
+                if let status = node[Constants.JSONKeys.status] as? [String:Any],
+                    let metadata = node[Constants.JSONKeys.metadata] as? [String:Any],
+                    let name = metadata[Constants.JSONKeys.name] as? String,
+                    let startTimeStr = metadata[Constants.JSONKeys.creationtime] as? String,
+                    let info = status[Constants.JSONKeys.nodeInfo] as? [String: Any],
+                    let image = info[Constants.JSONKeys.image] as? String,
+                    let capDict = status[Constants.JSONKeys.capacity] as? [String: Any],
+                    let cpuCap = capDict[Constants.JSONKeys.cpu] as? String,
+                    let memCap = capDict[Constants.JSONKeys.memory] as? String,
+                    let addresses = status[Constants.JSONKeys.addressList] as? [[String:String]]{
+                    var externalIP : String?
+                    for thisDict in addresses {
+                        if thisDict[Constants.JSONKeys.type] == Constants.JSONKeys.externalIP {
+                            externalIP = thisDict[Constants.JSONKeys.address]
                         }
                     }
+                    
+                    var memAlloc : String?
+                    var cpuAlloc : String?
+                    if let allocDict = status[Constants.JSONKeys.allocatable] as? [String:Any] {
+                        memAlloc = allocDict[Constants.JSONKeys.memory] as? String
+                        cpuAlloc = allocDict[Constants.JSONKeys.cpu] as? String
+                    }
+                    let model = NodeModel(name:name, creationDateStr:startTimeStr, osImage:image, cpuCapStr:cpuCap,
+                                          cpuAllocableStr:cpuAlloc, memCapStr:memCap, memAllocableStr:memAlloc, externalIP:externalIP)
+                    foundNodes.append(model)
+                }
+            }
+        }
+        return foundNodes
+    }
+    
+    private class func kubectlJsonHelper(arguments:[String]) -> [[String: Any]]?{
+        do {
+            if let result = TerminalInterface.run(commandName: PreferenceData.sharedInstance.kubePath, arguments: arguments),
+                let data = result.data(using: .utf8),
+                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                let itemList = json[Constants.JSONKeys.items] as? [[String: Any]]{
+                return itemList
             }
         } catch {
             print("Error deserializing JSON: \(error)")
         }
-        return foundNodes
+        return nil
     }
     
     //gets the resource info for a given node
@@ -194,7 +194,7 @@ class KubernetesMediator: NSObject {
         let formatted = clusterName?.replacingOccurrences(of: "'", with: "")
         return ClusterModel(name:formatted, nodeList:nodeList)
     }
-  
+    
 }
 
 
