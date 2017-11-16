@@ -46,7 +46,7 @@
 		5F91EF3F1FABA34600753BAC /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		5F91EF431FABC2FF00753BAC /* ClusterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClusterModel.swift; sourceTree = "<group>"; };
 		5F91EF451FABC31A00753BAC /* NodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeModel.swift; sourceTree = "<group>"; };
-		5FA300891FA7CB1B008E846B /* KubernetesMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KubernetesMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FA300891FA7CB1B008E846B /* KubeMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KubeMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FA3008C1FA7CB1B008E846B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FA300901FA7CB1B008E846B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FA300951FA7CB1B008E846B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 		5FA3008A1FA7CB1B008E846B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5FA300891FA7CB1B008E846B /* KubernetesMonitor.app */,
+				5FA300891FA7CB1B008E846B /* KubeMonitor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,9 +154,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5FA300881FA7CB1B008E846B /* KubernetesMonitor */ = {
+		5FA300881FA7CB1B008E846B /* KubeMonitor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5FA300981FA7CB1B008E846B /* Build configuration list for PBXNativeTarget "KubernetesMonitor" */;
+			buildConfigurationList = 5FA300981FA7CB1B008E846B /* Build configuration list for PBXNativeTarget "KubeMonitor" */;
 			buildPhases = (
 				FD18E1C1F1471679C246C77F /* [CP] Check Pods Manifest.lock */,
 				5FA300851FA7CB1B008E846B /* Sources */,
@@ -169,9 +169,9 @@
 			);
 			dependencies = (
 			);
-			name = KubernetesMonitor;
+			name = KubeMonitor;
 			productName = KubernetesMonitor;
-			productReference = 5FA300891FA7CB1B008E846B /* KubernetesMonitor.app */;
+			productReference = 5FA300891FA7CB1B008E846B /* KubeMonitor.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -190,7 +190,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5FA300841FA7CB1B008E846B /* Build configuration list for PBXProject "KubernetesMonitor" */;
+			buildConfigurationList = 5FA300841FA7CB1B008E846B /* Build configuration list for PBXProject "KubeMonitor" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -203,7 +203,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5FA300881FA7CB1B008E846B /* KubernetesMonitor */,
+				5FA300881FA7CB1B008E846B /* KubeMonitor */,
 			);
 		};
 /* End PBXProject section */
@@ -401,7 +401,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = KubernetesMonitor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sanche.KubernetesMonitor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sanche.KubeMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -415,7 +415,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = KubernetesMonitor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sanche.KubernetesMonitor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sanche.KubeMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -424,7 +424,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5FA300841FA7CB1B008E846B /* Build configuration list for PBXProject "KubernetesMonitor" */ = {
+		5FA300841FA7CB1B008E846B /* Build configuration list for PBXProject "KubeMonitor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5FA300961FA7CB1B008E846B /* Debug */,
@@ -433,7 +433,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5FA300981FA7CB1B008E846B /* Build configuration list for PBXNativeTarget "KubernetesMonitor" */ = {
+		5FA300981FA7CB1B008E846B /* Build configuration list for PBXNativeTarget "KubeMonitor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5FA300991FA7CB1B008E846B /* Debug */,
