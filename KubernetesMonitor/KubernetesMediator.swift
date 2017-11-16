@@ -48,7 +48,7 @@ class KubernetesMediator: NSObject {
     class func getPods(groupingLabel:String=PreferenceData.sharedInstance.groupingLabel) -> [GroupModel] {
         var labelDict: [String:[PodModel]] = [Constants.UnlabeledKey:[]]
         var groupList : [GroupModel] = []
-        if let podList = KubernetesMediator.kubectlJsonHelper(arguments: ["get", "pods", "-o=json", "--all-namespaces"]) {
+        if let podList = KubernetesMediator.kubectlJsonHelper(arguments: ["get", "pods","--all-namespaces"]) {
             for pod in podList {
                 if let metadata = pod[Constants.JSONKeys.metadata] as? [String: Any],
                     let namespace = metadata[Constants.JSONKeys.namespace] as? String,
@@ -96,7 +96,7 @@ class KubernetesMediator: NSObject {
     private class func getNodes() -> [NodeModel] {
         var foundNodes : [NodeModel] = []
         
-        if let nodeList = KubernetesMediator.kubectlJsonHelper(arguments: ["get", "nodes", "-o=json"]){
+        if let nodeList = KubernetesMediator.kubectlJsonHelper(arguments: ["get", "nodes"]){
             for node in nodeList {
                 if let status = node[Constants.JSONKeys.status] as? [String:Any],
                     let metadata = node[Constants.JSONKeys.metadata] as? [String:Any],
@@ -130,9 +130,10 @@ class KubernetesMediator: NSObject {
         return foundNodes
     }
     
+    //takes in a list of kubectl arguments, and returns the results in the "items" field of the resulting json
     private class func kubectlJsonHelper(arguments:[String]) -> [[String: Any]]?{
         do {
-            if let result = TerminalInterface.run(commandName: PreferenceData.sharedInstance.kubePath, arguments: arguments),
+            if let result = TerminalInterface.run(commandName: PreferenceData.sharedInstance.kubePath, arguments: arguments + ["-o=json"]),
                 let data = result.data(using: .utf8),
                 let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                 let itemList = json[Constants.JSONKeys.items] as? [[String: Any]]{
