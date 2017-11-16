@@ -1123,7 +1123,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         </scene>
     </scenes>
     <resources>
-        <image name="settings" width="320" height="330"/>
+        <image name="settings" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Hhm-99-6Fc"/>

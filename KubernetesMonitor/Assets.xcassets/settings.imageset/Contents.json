@@ -2,21 +2,25 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "settings.png",
+      "filename" : "noun_1241.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "setttings.png",
+      "filename" : "noun_1241_2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "noun_1241_3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }
