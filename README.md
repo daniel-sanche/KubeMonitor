@@ -1,7 +1,7 @@
 # KubeMonitor
 
 ### About KubeMonitor
-KubeMonitor is an OS X app that displays information about your active Kubernetes cluster 
+KubeMonitor is an macOS app that displays information about your active Kubernetes cluster 
 in your menu bar. Internally, it polls the `kubectl` command to gather information about
 running pods and nodes, and displays it in a more user-friendly way
 
