@@ -37,6 +37,11 @@ running pods and nodes, and displays it in a more user-friendly way
 - Connecting an SSH session to a node requires keys for authentication. If Google Cloud is
 being used, these keys should be found at `~/.ssh/google_compute_engine`
 
+### Building Project
+Because this project uses [CocoaPods](https://cocoapods.org/) to manage third party code, 
+you must run `pod install` inside the directory to download dependencies before the project will compile. After Cocoapods is initialized, the project should be opened through the generated 
+KubeMonitor.xcworkspace file
+
 ### Third Party Libraries
 - This project makes use of [Core Plot](https://github.com/core-plot/core-plot) through [CocoaPods](https://cocoapods.org/)
 
