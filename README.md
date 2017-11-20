@@ -29,6 +29,8 @@ running pods and nodes, and displays it in a more user-friendly way
   - the cluster name is displayed at the top of the window, making switching between clusters
   less confusing
 
+---
+
 ### Dependencies
 - `kubectl` is required in order to get information about the cluster
   - By default, KubeMonitor will look for the command in `~/Documents/google-cloud-sdk/bin/`, 
