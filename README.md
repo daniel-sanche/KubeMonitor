@@ -47,5 +47,14 @@ KubeMonitor.xcworkspace file
 ### Third Party Libraries
 - This project makes use of [Core Plot](https://github.com/core-plot/core-plot) through [CocoaPods](https://cocoapods.org/)
 
+
+### Contributing changes
+
+- See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+### Licensing
+
+- See [LICENSE](LICENSE)
+
 ---
 **This is not an official Google product**
