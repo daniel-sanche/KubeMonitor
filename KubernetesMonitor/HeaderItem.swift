@@ -32,7 +32,7 @@ class HeaderItem: NSCollectionViewItem {
     @IBAction func disclosurePressed(_ sender: NSControl) {
         let newState = !Bool(sender.integerValue as NSNumber)
         associatedModel?.collapsed = newState
-        self.collectionView.reloadData()
+        self.collectionView!.reloadData()
     }
     
      // change the model associated with the cell. Update the view
