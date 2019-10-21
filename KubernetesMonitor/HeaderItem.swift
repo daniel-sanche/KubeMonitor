@@ -39,7 +39,7 @@ class HeaderItem: NSCollectionViewItem {
      func setUpWithGroup(model:GroupModel){
         self.textLabel.stringValue = model.name + " (\(model.numberRunning())/\(model.numPods()))"
         self.associatedModel = model
-        self.disclosureButton.state = Int(!model.collapsed as NSNumber)
+        self.disclosureButton.state = NSControl.StateValue(rawValue: Int(!model.collapsed as NSNumber))
         self.textLabel.textColor = NSColor.colorForPhase(phase: model.getWorstPhase())
     }
     

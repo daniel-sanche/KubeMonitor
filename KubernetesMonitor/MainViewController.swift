@@ -32,8 +32,8 @@ class MainViewController: NSViewController, NSCollectionViewDelegate, NSCollecti
     // MARK:  initialization
     static func freshController() -> MainViewController {
 
-        let storyboard = NSStoryboard(name: Constants.StoryBoardName, bundle: nil)
-        guard let viewcontroller = storyboard.instantiateController(withIdentifier: Constants.ViewControllerName) as? MainViewController else {
+        let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: Constants.StoryBoardName), bundle: nil)
+        guard let viewcontroller = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: Constants.ViewControllerName)) as? MainViewController else {
             fatalError("Could not instantiate MainViewController")
         }
         return viewcontroller
@@ -144,12 +144,12 @@ class MainViewController: NSViewController, NSCollectionViewDelegate, NSCollecti
         
         if indexPath.item == 0{
             //display group header
-            item = collectionView.makeItem(withIdentifier: Constants.HeaderItemName, for: indexPath)
+            item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: Constants.HeaderItemName), for: indexPath)
             guard let headerItem = item as? HeaderItem else {return item}
             headerItem.setUpWithGroup(model: group)
         } else {
             //display pod cell
-            item = collectionView.makeItem(withIdentifier: Constants.PodItemName, for: indexPath)
+            item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: Constants.PodItemName), for: indexPath)
             guard let podItem = item as? PodItem else {return item}
             podItem.textLabel.textColor = NSColor.Kube.Gray
             if let thisPod = group.getPodAtIdx(idx: indexPath.item-1){

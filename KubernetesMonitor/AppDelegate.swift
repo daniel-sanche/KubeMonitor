@@ -20,7 +20,8 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var rightClickMenu: NSMenu!
-    private let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
+//    private let statusItem = NSStatusBar.system().statusItem(withLength: NSStatusItem.NSSquareStatusItemLength)
+    private let statusItem = NSStatusBar.system.statusItem(withLength: 30)
     private let popOver = NSPopover()
     private var eventMonitor: EventMonitor?
     private var mainController : MainViewController?
@@ -30,16 +31,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         //set the status icon
         if let button = statusItem.button {
-            let icon = NSImage(named:Constants.StatusImageName)
+//            let icon = NSImage(named:NSImage.Name(rawValue: Constants.StatusImageName))
+//            let icon = NSImage(named:NSImage.Name() as String)
+            let icon = NSImage(named:NSImage.Name(rawValue: "KubeMonitor"))
             icon?.isTemplate = true
             button.image = icon
             button.action = #selector(statusBtnPressed(_:))
-            button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+            button.sendAction(on: [NSEvent.EventTypeMask.leftMouseUp, NSEvent.EventTypeMask.rightMouseUp])
         }
         //set up the view controller
         popOver.contentViewController = MainViewController.freshController()
         self.mainController = popOver.contentViewController as? MainViewController
-        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown, .otherMouseDown]) { [weak self] event in
+        eventMonitor = EventMonitor(mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown, NSEvent.EventTypeMask.otherMouseDown]) { [weak self] event in
             if let strongSelf = self, strongSelf.popOver.isShown {
                 strongSelf.closePopover(sender: event)
             }

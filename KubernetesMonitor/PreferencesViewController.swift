@@ -45,14 +45,14 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
             self.sshPathTextField.stringValue = ""
         }
         if PreferenceData.sharedInstance.showUnlabeledPods {
-            unlabeledPodsOn.state = 1
+            unlabeledPodsOn.state = NSControl.StateValue(rawValue: 1)
         } else {
-            unlabeledPodsOff.state = 1
+            unlabeledPodsOff.state = NSControl.StateValue(rawValue: 1)
         }
         if PreferenceData.sharedInstance.showSystemPods {
-            systemPodsOn.state = 1
+            systemPodsOn.state = NSControl.StateValue(rawValue: 1)
         } else {
-            systemPodsOff.state = 1
+            systemPodsOff.state = NSControl.StateValue(rawValue: 1)
         }
         kubectlPathField.textColor = NSColor(calibratedWhite: 0, alpha: 1)
         groupingLabelField.textColor = NSColor(calibratedWhite: 0, alpha: 1)
@@ -100,7 +100,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     
     @IBAction func quitBtnPressed(_ sender: Any) {
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
     }
     
     override func controlTextDidChange(_ obj: Notification) {
