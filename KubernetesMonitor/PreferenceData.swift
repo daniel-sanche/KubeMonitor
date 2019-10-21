@@ -25,7 +25,7 @@ class PreferenceData {
     var groupingLabel : String
     var sshPath :String?
     
-    private let kubePathDefault : String = "~/Documents/google-cloud-sdk/bin/kubectl"
+    private let kubePathDefault : String = "/Applications/Docker.app/Contents/Resources/bin/kubectl"
     private let showSystemPodsDefault : Bool = true
     private let showUnlabeledPodsDefault : Bool = true
     private let groupingLabelDefault = "app"

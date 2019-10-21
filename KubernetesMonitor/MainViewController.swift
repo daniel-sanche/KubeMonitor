@@ -144,12 +144,12 @@ class MainViewController: NSViewController, NSCollectionViewDelegate, NSCollecti
         
         if indexPath.item == 0{
             //display group header
-            item = collectionView.makeItem(withIdentifier: Constants.HeaderItemName, for: indexPath)
+            item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: Constants.HeaderItemName), for: indexPath)
             guard let headerItem = item as? HeaderItem else {return item}
             headerItem.setUpWithGroup(model: group)
         } else {
             //display pod cell
-            item = collectionView.makeItem(withIdentifier: Constants.PodItemName, for: indexPath)
+            item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: Constants.PodItemName), for: indexPath)
             guard let podItem = item as? PodItem else {return item}
             podItem.textLabel.textColor = NSColor.Kube.Gray
             if let thisPod = group.getPodAtIdx(idx: indexPath.item-1){

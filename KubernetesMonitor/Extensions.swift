@@ -46,7 +46,7 @@ extension String {
     //truncate a string so that it is rouchly truncationSize
     func truncateMiddle(truncationSize:Int) -> String {
         var result = self
-        let length = self.characters.count
+        let length = self.count
         if(length>truncationSize){
             let halfSize = truncationSize/2
             let startEnd = self.index(self.startIndex, offsetBy: halfSize)
