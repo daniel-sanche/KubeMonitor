@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
 //            let icon = NSImage(named:NSImage.Name(rawValue: Constants.StatusImageName))
 //            let icon = NSImage(named:NSImage.Name() as String)
-            let icon = NSImage(named:NSImage.Name(rawValue: "KubeMonitor"))
+            let icon = NSImage(named:"Status")
             icon?.isTemplate = true
             button.image = icon
             button.action = #selector(statusBtnPressed(_:))

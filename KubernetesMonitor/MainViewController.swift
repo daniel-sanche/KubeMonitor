@@ -32,8 +32,8 @@ class MainViewController: NSViewController, NSCollectionViewDelegate, NSCollecti
     // MARK:  initialization
     static func freshController() -> MainViewController {
 
-        let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: Constants.StoryBoardName), bundle: nil)
-        guard let viewcontroller = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: Constants.ViewControllerName)) as? MainViewController else {
+        let storyboard = NSStoryboard(name: Constants.StoryBoardName, bundle: nil)
+        guard let viewcontroller = storyboard.instantiateController(withIdentifier: Constants.ViewControllerName) as? MainViewController else {
             fatalError("Could not instantiate MainViewController")
         }
         return viewcontroller

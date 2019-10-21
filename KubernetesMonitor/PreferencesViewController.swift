@@ -103,7 +103,7 @@ class PreferencesViewController: NSViewController, NSTextFieldDelegate {
         NSApplication.shared.terminate(self)
     }
     
-    override func controlTextDidChange(_ obj: Notification) {
+    func controlTextDidChange(_ obj: Notification) {
         if let field = obj.object as? NSTextField{
             field.textColor = NSColor(calibratedWhite: 0.4, alpha: 1)
         }
